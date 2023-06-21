@@ -1,0 +1,25 @@
+package MProf_15_06.HW;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Task15 {
+    public static void main(String[] args) {
+        int[][] arr = {{1, 2, 3, 4}, {5, 6, 7, 8}};
+        int[] result = sumElements(arr);
+        for (int num : result) {
+            System.out.println(num);
+        }
+    }
+
+    public static int[] sumElements(int[][] arr) {
+        int[] result = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                result[i] += arr[i][j];
+            }
+        }
+        return result;
+    }
+}
+
