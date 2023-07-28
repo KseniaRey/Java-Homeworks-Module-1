@@ -2,8 +2,12 @@ package org.example;
 
 import com.github.javafaker.Faker;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Generator {
 
@@ -68,6 +72,94 @@ public class Generator {
         Car car = new Car(faker.color().name(), faker.bool().bool(), carBrand, faker.number().numberBetween(180, 250)); // создаем новый объект Car и с помощью библиотеки присваиваем ему значения
         return car; // возвращаем созданный объект с прописанными значениями
         }
+
+
+        public Map<Character, List<Car>> groupCarsByGender() {
+            Map<Character, List<Car>> carMap = new HashMap<>();
+
+            for (Developer developer : developerList) {
+                char gender = developer.getGender();
+                Car car = generateCar();
+
+                // Check if the gender is already in the map
+                if (carMap.containsKey(gender)) {
+                    // If yes, add the car to the existing list of cars for that gender
+                    carMap.get(gender).add(car);
+                } else {
+                    // If no, create a new list with the car and put it in the map
+                    List<Car> cars = new ArrayList<>();
+                    cars.add(car);
+                    carMap.put(gender, cars);
+                }
+            }
+
+            // Print the result for each gender
+            for (Map.Entry<Character, List<Car>> entry : carMap.entrySet()) {
+                char gender = entry.getKey();
+                List<Car> cars = entry.getValue();
+
+                if (gender == 'M') {
+                    System.out.println("Male developers are having:");
+                } else {
+                    System.out.println("Female developers are having:");
+                }
+
+                for (Car car : cars) {
+                    System.out.println(car);
+                }
+            }
+
+            return carMap;
+        }
+    //-----------------------------------
+//        public Map<Character, Car> groupCarsByGender(){
+//        Map<Character, Car> carMap = new HashMap<>();
+//        for (Developer developer : developerList) {
+//            char gender = developer.getGender();
+//            if (developer.getGender() == 'M'){
+//                carMap.put(gender, generateCar());
+//                System.out.println("Male developers are having: " + carMap);
+//            } else {
+//                carMap.put(gender, generateCar());
+//                System.out.println("Female developers are having: " + carMap);
+//            }
+//        }
+//            return carMap;
+//        }
+        //--------------------------------
+// —Переводить в мапу ключ-девелопер а значение максимальная скоросьть авто
+    public Map<Developer, Integer> changingToMap(){
+        Map<Developer, Integer> map = new HashMap<>();
+
+        for (Developer dev : developerList) {
+        Car car = dev.getCar();
+        int speed = car.getMaxSpeed();
+        map.put(dev, speed);
+
+        }
+        for (Map.Entry<Developer, Integer> entry : map.entrySet()) {
+            Developer dev = entry.getKey();
+            int speed = entry.getValue();
+            System.out.println(dev.getFirstName() + " - Max Speed: " + speed);
+        }
+        return map;
+    }
+
+// записывать в текстовый файл всех девелоперов в формате : Jonn-[auto: BMW ::: salary: 12345] в столбик. Т.е в файле нужна только эта инфа
+    public void writeToFile(List<Developer> developerList2, String filename){
+        try (FileWriter fileWriter = new FileWriter(filename)) {
+            for (Developer developer : developerList2) {
+                fileWriter.write(developer.getFirstName() + "-[auto: "
+                        + developer.getCar().getCarBrand() + "::: salary: "
+                        + developer.getSalary() + "]\n"
+
+                );
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
 }
