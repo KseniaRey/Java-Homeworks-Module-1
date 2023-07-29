@@ -1,0 +1,7 @@
+Daniela -[auto: LAMBORGHINI ::: salary: 160191.0
+Tammy -[auto: LEXUS ::: salary: 700974.0
+Rana -[auto: LEXUS ::: salary: 422961.0
+Bret -[auto: AUDI ::: salary: 656074.0
+Shala -[auto: LAMBORGHINI ::: salary: 590424.0
+Doloris -[auto: MASERATI ::: salary: 640359.0
+Verline -[auto: LAMBORGHINI ::: salary: 585296.0

@@ -1,0 +1,7 @@
+Pearly -[auto: LEXUS ::: salary: 22902.0]
+Marcelino -[auto: MASERATI ::: salary: 607432.0]
+Emelina -[auto: LAMBORGHINI ::: salary: 926234.0]
+Josef -[auto: AUDI ::: salary: 77941.0]
+Dana -[auto: LAMBORGHINI ::: salary: 635957.0]
+Martha -[auto: AUDI ::: salary: 297277.0]
+Vince -[auto: LAMBORGHINI ::: salary: 134174.0]
